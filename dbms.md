@@ -167,7 +167,65 @@ FROM Employees e1
 INNER JOIN Employees e2 ON e1.ManagerID = e2.EmployeeID;
 ```
 
+### 11. Show departments having more than 5 employees.
+```sql
+SELECT department_id, COUNT(*) AS employee_count
+FROM employees
+GROUP BY department_id
+HAVING COUNT(*) > 5;
+```
+
+### 12. Fetch the top 5 highest-paid employees.
+ ```sql
+SELECT name, salary
+FROM employees
+ORDER BY salary DESC
+LIMIT 5;
+```
 ---
+
+# Simple SQL JOIN and Aggregation Question for Freshers
+
+## Question: Count Orders per Customer
+
+**Scenario**:
+You have two tables:
+- `customers` (`customer_id`, `customer_name`)
+- `orders` (`order_id`, `customer_id`)
+
+**Task**:
+Write a SQL query to fetch each customer's name and the number of orders they have placed. Include all customers, even those with no orders. If a customer has no orders, display 0 as the order count.
+
+**Sample Data**:
+- `customers`:
+  | customer_id | customer_name |
+  |-------------|---------------|
+  | 1           | Alice         |
+  | 2           | Bob           |
+  | 3           | Charlie       |
+
+- `orders`:
+  | order_id | customer_id |
+  |----------|-------------|
+  | 101      | 1           |
+  | 102      | 1           |
+  | 103      | 2           |
+
+**Expected Output**:
+| customer_name | order_count |
+|---------------|-------------|
+| Alice         | 2           |
+| Bob           | 1           |
+| Charlie       | 0           |
+
+**Write your SQL query below**:
+```sql
+```sql
+SELECT c.customer_name, COUNT(o.order_id) AS order_count
+FROM customers c
+LEFT JOIN orders o ON c.customer_id = o.customer_id
+GROUP BY c.customer_name;
+```
 
 ## Hard/Tricky Questions
 
@@ -290,3 +348,37 @@ COMMIT;
 ---
 
 This set of questions covers a broad range of DBMS topics, preparing freshers for technical interviews with practical SQL examples and clear explanations.
+
+
+# SQL JOIN Practice Question for Freshers
+
+## Question: Fetch Employee and Department Details with Location
+
+**Scenario**:
+You have three tables:
+- `employees` (`emp_id`, `emp_name`, `dept_id`)
+- `departments` (`dept_id`, `dept_name`, `location_id`)
+- `locations` (`location_id`, `location_name`)
+
+**Task**:
+Write a SQL query to fetch the employee name, department name, and location name for all employees, including employees who are not assigned to any department. If an employee is not assigned to a department, the department name and location name should appear as NULL.
+
+**Sample Data**:
+- `employees`: (1, 'Alice', 10), (2, 'Bob', 20), (3, 'Charlie', NULL)
+- `departments`: (10, 'HR', 100), (20, 'IT', 200)
+- `locations`: (100, 'New York'), (200, 'London')
+
+**Expected Output**:
+| emp_name | dept_name | location_name |
+|----------|-----------|---------------|
+| Alice    | HR        | New York      |
+| Bob      | IT        | London        |
+| Charlie  | NULL      | NULL          |
+
+**Write your SQL query below**:
+```sql
+SELECT e.emp_name, d.dept_name, l.location_name
+FROM employees e
+LEFT JOIN departments d ON e.dept_id = d.dept_id
+LEFT JOIN locations l ON d.location_id = l.location_id;
+```
