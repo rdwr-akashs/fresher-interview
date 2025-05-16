@@ -15,12 +15,6 @@ The OSI (Open Systems Interconnection) model is a conceptual framework used to u
 ---
 
 ## 2. Explain the difference between OSI and TCP/IP models.
-| Feature | OSI Model | TCP/IP Model |
-|--------|-----------|--------------|
-| Layers | 7 layers  | 4 layers     |
-| Developed by | ISO | DARPA (U.S. Department of Defense) |
-| Layers Included | Application, Presentation, Session, Transport, Network, Data Link, Physical | Application, Transport, Internet, Network Access |
-| Protocol Orientation | Protocol-independent model | Protocol-specific (e.g., TCP, IP) |
 
 The OSI (Open Systems Interconnection) and TCP/IP (Transmission Control Protocol/Internet Protocol) models are two reference models used to understand and design computer networks. While OSI is a theoretical model, TCP/IP is a practical model that is widely used in real-world networking.
 
